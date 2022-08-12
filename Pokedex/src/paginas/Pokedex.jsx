@@ -3,6 +3,7 @@ import Buscador  from '../componentes/inicioComponentes/Buscador'
 import Header from '../componentes/inicioComponentes/Header'
 import ListaPokemon from '../componentes/inicioComponentes/ListaPokemon'
 import Spinner from '../componentes/inicioComponentes/Spinner'
+import BotonAgregarPokemon from '../componentes/inicioComponentes/BotonAgregarPokemon'
 
 
 
@@ -49,11 +50,14 @@ const Pokedex = () => {
             handleNumeric={handleNumeric}
             handleString={handleString}
             />
+
+            <BotonAgregarPokemon/>
+            
             <Buscador 
             onChange={setValor}
+            /> 
             
 
-            /> 
             {cargando && <Spinner />}
             <ListaPokemon 
             allPokemons={allPokemons.filter((pokemon) => pokemon.name.match(valor))} 

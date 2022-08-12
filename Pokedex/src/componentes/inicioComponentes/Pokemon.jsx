@@ -7,7 +7,7 @@ const Pokemon = ({type, name , img , id}) => {
   return (
     <>
     <Link         
-     to={`PaginaPokemon/${id}`}
+     to={`/Details/${id}`}
      
      >
 

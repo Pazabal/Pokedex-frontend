@@ -2,9 +2,10 @@ import React from 'react'
 import { BrowserRouter , Routes, Route } from 'react-router-dom'
 import './App.css'
 import Inicio from './paginas/Inicio'
-import PaginaPokemon from './paginas/PaginaPokemon'
+import Details from './paginas/Details'
 import "@fontsource/poppins";
 import Pokedex from './paginas/Pokedex'
+import AgregarPokemon from './paginas/AgregarPokemon'
 
 function App() {
 
@@ -26,8 +27,14 @@ function App() {
        />}
       />
       <Route 
-       path='/PaginaPokemon/:id'
-       element={<PaginaPokemon
+       path='/Details/:id'
+       element={<Details
+       
+       />}
+      />
+      <Route 
+       path='/AgregarPokemon'
+       element={<AgregarPokemon
        
        />}
       />

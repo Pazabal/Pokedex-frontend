@@ -3,7 +3,7 @@ import Fondo from '../componentes/paginaPokemonComponentes/Fondo'
 import { useParams } from 'react-router-dom';
 
 
-const PaginaPokemon = () => {
+const Details = () => {
 
   const {id, index} = useParams(); 
 
@@ -18,4 +18,4 @@ const PaginaPokemon = () => {
   )
 }
 
-export default PaginaPokemon
+export default Details

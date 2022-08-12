@@ -14,7 +14,7 @@ const HeaderPokemon = ({pokemonType2, pokemonType, pokemonId, pokemonTypes, name
         <div className='flex items-center justify-between mx-[20px] mt-[20px] text-white'>
           <div className='flex'>
 
-            <Link to={`/ `}>        
+            <Link to={`/Pokedex `}>        
               <i className="fa-solid flex  text-[25px] fa-arrow-left mr-[20px]"></i>
             </Link>
             <p className='capitalize text-2xl'>{name}</p>
@@ -40,21 +40,21 @@ const HeaderPokemon = ({pokemonType2, pokemonType, pokemonId, pokemonTypes, name
         src={Pokeball} alt="" />
         </div>
       
-       {(pokemonId < 2) ? <Link  to={`/PaginaPokemon/${nextPokemon} `} >
+       {(pokemonId < 2) ? <Link  to={`/Details/${nextPokemon} `} >
           <i className="fa-solid flex  text-[25px] text-white mr-6 justify-end fa-arrow-right "></i>
           </Link>
          : 
         <div className='flex items-center justify-between'> 
-          <Link to={`/PaginaPokemon/${previousPokemon} `} >
+          <Link to={`/Details/${previousPokemon} `} >
             <i className="fa-solid flex  text-[25px] text-white ml-6  fa-arrow-left "></i>
           </Link> 
-          <Link to={`/PaginaPokemon/${nextPokemon} `} > 
+          <Link to={`/Details/${nextPokemon} `} > 
             <i className="fa-solid flex  text-[25px] text-white mr-6  fa-arrow-right "></i>
           </Link> 
         </div>}
       
       <img 
-      className='flex  top-[185px]  left-0 right-0 h-[250px] m-auto w-[250px] absolute'
+      className='flex  top-[155px]  left-0 right-0 h-[250px] m-auto w-[250px] absolute'
       src={selectedPokemonDetails.sprites && selectedPokemonDetails.sprites.other.dream_world.front_default} alt="" />
        <Carta
         pokemonType={pokemonType}
