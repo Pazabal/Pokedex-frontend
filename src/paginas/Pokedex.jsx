@@ -16,7 +16,7 @@ const Pokedex = () => {
 
   useEffect(() => {
     setCargando(true)
-    fetch('https://us-central1-senpai-9b555.cloudfunctions.net/getFullList')
+    fetch('http://localhost:4000/pokemon')
       .then((response) => response.json())
       .then((resultado) => {
         setAllPokemons(resultado) 

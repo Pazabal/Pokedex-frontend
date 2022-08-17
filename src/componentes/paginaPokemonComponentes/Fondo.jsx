@@ -18,12 +18,15 @@ const Fondo = ({id}) => {
   const [pokemonId, setPokemonId] = useState("")
 
 const getPokemonDetails = () => {
-  fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+  fetch(`https://localhost:4000/pokemon/${id}`) //pasar id en un fetch en la response del json
+  
   .then(res => res.json())
   .then((fetchedPokemon) => {
+
+    console.log(fetchedPokemon);
       setSelectedPokemonDetails(fetchedPokemon);
-      setPokemonType(fetchedPokemon.types[0].type.name)
-      setPokemonType2(fetchedPokemon.types[1]?.type.name)
+      setPokemonType(fetchedPokemon.types[0].name)
+      setPokemonType2(fetchedPokemon.types[1]?.name)
       setPokemonTypes(fetchedPokemon.types)
       setSelectedPokemonHP(fetchedPokemon.stats[0].base_stat)
       setSelectedPokemonATK(fetchedPokemon.stats[1].base_stat)
