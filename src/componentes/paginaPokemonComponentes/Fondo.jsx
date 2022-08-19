@@ -45,7 +45,7 @@ const getPokemonDetails = () => {
 }
 
 const getPokemonText = () => {
-  fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`)
+  fetch(`http://pokeapi.co/api/v2/pokemon-species/${id}`)
   .then(res => res.json())
   .then((fetchedPokemon) => {
   setSelectedPokemonText(fetchedPokemon.flavor_text_entries[5].flavor_text)

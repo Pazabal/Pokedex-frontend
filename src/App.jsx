@@ -8,7 +8,7 @@ import Pokedex from './paginas/Pokedex'
 import AgregarPokemon from './paginas/AgregarPokemon'
 
 function App() {
-
+  
 
   return (
     <div className='w-full letra  m-auto h-full'>

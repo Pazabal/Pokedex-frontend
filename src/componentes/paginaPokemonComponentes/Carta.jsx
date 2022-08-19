@@ -9,7 +9,7 @@ const Carta = ({pokemonType, pokemonTypes ,pokemonType2, selectedPokemonDetails 
        
       <div className="mt-[70px] flex w-full justify-center text-center  text-white">
           {pokemonTypes.map( (type) => (
-            <p className={` h-[35px] w-[70px] ${type.name} rounded-full text-center flex items-center justify-center capitalize m-[10px]`}>{type.type.name}</p>
+            <p className={` h-[35px] w-[70px] ${type.name} rounded-full text-center flex items-center justify-center capitalize m-[10px]`}>{type.name}</p>
           ))}
         
       </div>
