@@ -23,7 +23,9 @@ const Inicio = () => {
               <p>¿Cuál es su contraseña?</p>
               <input type='password' placeholder='Ingrese su contraseña' className='w-full md:w-[500px] pl-[20px] bg-[#f7f7f9] mt-[10px] mb-[50px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
             <div className='flex justify-center'>
+              <Link to='/Pokedex' >
               <button className='bg-[#ffca2a] rounded-2xl w-[100px] py-[5px] shadow-md hover:shadow-xl'>Ingresar</button>
+              </Link>
             </div>
               <hr className='my-[50px]'/>
             </div>

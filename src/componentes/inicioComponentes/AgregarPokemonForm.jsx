@@ -31,7 +31,12 @@ const AgregarPokemonForm = () => {
   return (
     <div className='w-full bg-[#ffca2a] h-full pt-[50px]'>
         <div className='flex w-4/5 md:w-1/3 h-full m-auto  border-black border-[0.1px] fuente flex-col bg-[#F7F7F7] rounded-xl '>
-            <h1 className='flex justify-center my-[100px] font-bold text-4xl'>Agregar Pokemon</h1>
+            <div className="flex justify-center items-center">
+                <Link to={`/Pokedex `}>        
+                    <i className="fa-solid flex  text-[25px] fa-arrow-left mr-[20px]"></i>
+                </Link>
+                <h1 className='flex justify-center my-[100px] font-bold text-4xl'>Agregar Pokemon</h1>
+            </div>
             <form onSubmit={handleSubmit} className='flex flex-col w-[80%] md:w-full items-center justify-center'>
             {error && (<div><p className='text-red-600 text-center uppercase font-bold mb-5 p-3 rounded-xl'>Todos los campos son obligatorios</p></div>)}
                 <div className='w-[90%] md:w-1/2'>
