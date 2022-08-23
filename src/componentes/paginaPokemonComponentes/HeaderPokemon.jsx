@@ -54,7 +54,7 @@ const HeaderPokemon = ({pokemonType2, pokemonType, pokemonId, pokemonTypes, name
         </div>}
       
       <img 
-      className='flex  top-[155px]  left-0 right-0 h-[250px] m-auto w-[250px] absolute'
+      className='flex top-[120px]  md:top-[155px]  left-0 right-0 h-[220px] m-auto w-[220px] absolute'
       src={selectedPokemonDetails.datos_pokemon.image} alt="" />
        <Carta
         pokemonType={pokemonType}
