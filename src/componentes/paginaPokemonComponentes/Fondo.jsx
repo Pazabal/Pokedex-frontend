@@ -4,7 +4,10 @@ import HeaderPokemon from './HeaderPokemon'
 
 const Fondo = ({id}) => {
 
-  const [selectedPokemonDetails, setSelectedPokemonDetails] = useState({})
+  const [selectedPokemonDetails, setSelectedPokemonDetails] = useState({datos_pokemon:
+  {
+    name: " "
+  }})
   const [pokemonType, setPokemonType] = useState('')
   const [pokemonType2 , setPokemonType2] = useState ('')
   const [selectedPokemonText, setSelectedPokemonText] = useState('')
@@ -17,24 +20,42 @@ const Fondo = ({id}) => {
   const [selectedPokemonSPD, setSelectedPokemonSPD] = useState("")
   const [pokemonId, setPokemonId] = useState("")
 
-const getPokemonDetails = () => {
-  fetch(`https://localhost:4000/pokemon/${id}`) //pasar id en un fetch en la response del json
-  
-  .then(res => res.json())
-  .then((fetchedPokemon) => {
-
-    console.log(fetchedPokemon);
+const getPokemonDetails = async () => {
+  console.log('me ejecuto')
+  await fetch(`http://localhost:4000/pokemon/${id}`, {mode:'cors'}) 
+  .then((res) =>  { return res.json()})
+  .then((fetchedPokemon ) => {
+    if(fetchedPokemon.datos_pokemon){
       setSelectedPokemonDetails(fetchedPokemon);
       setPokemonType(fetchedPokemon.types[0].name)
       setPokemonType2(fetchedPokemon.types[1]?.name)
       setPokemonTypes(fetchedPokemon.types)
-      setSelectedPokemonHP(fetchedPokemon.stats[0].base_stat)
-      setSelectedPokemonATK(fetchedPokemon.stats[1].base_stat)
-      setSelectedPokemonDEF(fetchedPokemon.stats[2].base_stat)
-      setSelectedPokemonSATK(fetchedPokemon.stats[3].base_stat)
-      setSelectedPokemonSDEF(fetchedPokemon.stats[4].base_stat)
-      setSelectedPokemonSPD(fetchedPokemon.stats[5].base_stat)
-      setPokemonId(fetchedPokemon.id)
+      setSelectedPokemonHP(fetchedPokemon.datos_pokemon.hp)
+      setSelectedPokemonATK(fetchedPokemon.datos_pokemon.atk)
+      setSelectedPokemonDEF(fetchedPokemon.datos_pokemon.def)
+      setSelectedPokemonSATK(fetchedPokemon.datos_pokemon.satk)
+      setSelectedPokemonSDEF(fetchedPokemon.datos_pokemon.sdef)
+      setSelectedPokemonSPD(fetchedPokemon.datos_pokemon.spd)
+      setPokemonId(fetchedPokemon.datos_pokemon.id)
+      setSelectedPokemonText(fetchedPokemon.datos_pokemon.description)
+    } else {
+      fetch(`http://localhost:4000/pokemon/firstpokemon`, {mode:'cors'}) 
+      .then((res) =>  { return res.json()})
+      .then((fetchedPokemon ) => {
+        setSelectedPokemonDetails(fetchedPokemon);
+      setPokemonType(fetchedPokemon.types[0].name)
+      setPokemonType2(fetchedPokemon.types[1]?.name)
+      setPokemonTypes(fetchedPokemon.types)
+      setSelectedPokemonHP(fetchedPokemon.datos_pokemon.hp)
+      setSelectedPokemonATK(fetchedPokemon.datos_pokemon.atk)
+      setSelectedPokemonDEF(fetchedPokemon.datos_pokemon.def)
+      setSelectedPokemonSATK(fetchedPokemon.datos_pokemon.satk)
+      setSelectedPokemonSDEF(fetchedPokemon.datos_pokemon.sdef)
+      setSelectedPokemonSPD(fetchedPokemon.datos_pokemon.spd)
+      setPokemonId(fetchedPokemon.datos_pokemon.id)
+      setSelectedPokemonText(fetchedPokemon.datos_pokemon.description)
+      })
+    }
       
   })
   .catch ((error) => {
@@ -42,37 +63,25 @@ const getPokemonDetails = () => {
   })
 }
 
-const getPokemonText = () => {
-  fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`)
-  .then(res => res.json())
-  .then((fetchedPokemon) => {
-  setSelectedPokemonText(fetchedPokemon.flavor_text_entries[5].flavor_text)
-      
-      
-  })
-  .catch ((error) => {
-      console.log(error)
-  })
-}
+
 
 
 useEffect(() => {
   getPokemonDetails()
-  getPokemonText()
 } , [id]);
 
-console.log(pokemonId)
+console.log("fondo renderizado")
 
   return (
     <>
       <div className="h-auto w-auto"> 
           
         <HeaderPokemon 
-        name={selectedPokemonDetails.name}
+        name={selectedPokemonDetails.datos_pokemon.name}
         pokemonTypes={pokemonTypes}
         pokemonType={pokemonType}
         pokemonType2={pokemonType2}
-        id={selectedPokemonDetails.id}
+        id={selectedPokemonDetails.datos_pokemon.id}
         selectedPokemonDetails={selectedPokemonDetails}
         selectedPokemonText={selectedPokemonText}
         selectedPokemonHP={selectedPokemonHP}

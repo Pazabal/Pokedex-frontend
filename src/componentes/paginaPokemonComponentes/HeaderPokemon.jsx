@@ -55,7 +55,7 @@ const HeaderPokemon = ({pokemonType2, pokemonType, pokemonId, pokemonTypes, name
       
       <img 
       className='flex  top-[155px]  left-0 right-0 h-[250px] m-auto w-[250px] absolute'
-      src={selectedPokemonDetails.sprites && selectedPokemonDetails.sprites.other.dream_world.front_default} alt="" />
+      src={selectedPokemonDetails.datos_pokemon.image} alt="" />
        <Carta
         pokemonType={pokemonType}
         pokemonType2={pokemonType2}
