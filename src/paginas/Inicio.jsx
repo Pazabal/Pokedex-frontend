@@ -1,7 +1,19 @@
+import { SingleBedOutlined } from '@material-ui/icons'
 import React ,{ useState , useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
+
+
 const Inicio = () => {
+const login = () => {
+  fetch('http://localhost:4000/login', {method:'POST', headers:{'Content-Type': 'application/json', 'Accept': 'application/json'}, mode:'no-cors', body:JSON.stringify({name:name, password:password})})
+  .then((res) => {
+    console.log(res)
+  })
+}
+
+const [name, setName] = useState('');
+const [password, setPassword] = useState('');
 
 
   return (
@@ -16,16 +28,17 @@ const Inicio = () => {
           <div className='flex flex-col w-[80%] md:w-full items-center justify-center'>
             <div className='w-[90%] md:w-1/2'>
               <hr className='mb-[50px]'/>
-              <p>¿Cuál es su correo electrónico?</p>
-              <input type='text' placeholder='ingrese su email' className='w-full md:w-[500px] pl-[20px] bg-[#f7f7f9] mt-[10px] mb-[50px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
+              <p>¿Cuál es su nombre?</p>
+              <input type='text' onChange={(e) => {setName(e.target.value)}} placeholder='ingrese su nombre' className='w-full md:w-[500px] pl-[20px] bg-[#f7f7f9] mt-[10px] mb-[50px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
             </div>
             <div className='w-[90%] md:w-1/2'>
               <p>¿Cuál es su contraseña?</p>
-              <input type='password' placeholder='Ingrese su contraseña' className='w-full md:w-[500px] pl-[20px] bg-[#f7f7f9] mt-[10px] mb-[50px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
+              <input type='password' onChange={(e) => {setPassword(e.target.value)}} placeholder='Ingrese su contraseña' className='w-full md:w-[500px] pl-[20px] bg-[#f7f7f9] mt-[10px] mb-[50px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
             <div className='flex justify-center'>
-              <Link to='/Pokedex' >
-              <button className='bg-[#ffca2a] rounded-2xl w-[100px] py-[5px] shadow-md hover:shadow-xl'>Ingresar</button>
-              </Link>
+              <button className='bg-[#ffca2a] rounded-2xl w-[100px] py-[5px] shadow-md hover:shadow-xl' onClick={() => login()}>Ingresar</button> 
+              
+              {/* OnClick - fetch que ejecuta la api con un post (crear objecto que se llene con input user y contra, booleano. Se pasa entre componentes el boton de agregar) */}
+
             </div>
               <hr className='my-[50px]'/>
             </div>
