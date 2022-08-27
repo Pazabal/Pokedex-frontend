@@ -22,7 +22,7 @@ const Fondo = ({id}) => {
 
 const getPokemonDetails = async () => {
   console.log('me ejecuto')
-  await fetch(`http://localhost:4000/pokemon/${id}`, {mode:'cors'}) 
+  await fetch(`http://localhost:4000/pokemon/${id}`, {mode:'cors' } ) 
   .then((res) =>  { return res.json()})
   .then((fetchedPokemon ) => {
     if(fetchedPokemon.datos_pokemon){

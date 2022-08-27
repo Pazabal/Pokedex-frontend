@@ -5,17 +5,17 @@ import { Link } from 'react-router-dom'
 
 
 const Inicio = () => {
-const login = () => {
-  fetch('http://localhost:4000/login', {method:'POST', headers:{'Content-Type': 'application/json', 'Accept': 'application/json'}, mode:'no-cors', body:JSON.stringify({name:name, password:password})})
-  .then((res) => {
-    console.log(res)
-  })
-}
-
+  
 const [name, setName] = useState('');
 const [password, setPassword] = useState('');
 
+const login = async () => {
+  console.log('login ejecuta')
+  await fetch('http://localhost:4000/register/login', {method:'POST', headers:{'Content-Type': 'application/json', 'Accept': 'application/json'}, mode:'cors', body:JSON.stringify({'name':name, 'password':password})})
+  .then((res) => {return res.json()})
+   //ver si hacemos recorrido
 
+}
   return (
     <div className='flex'>
         <div  className='hidden md:flex md:flex-col md:justify-center md:items-center w-1/2 h-screen bg-[#ffca2a]'>

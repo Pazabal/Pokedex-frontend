@@ -16,7 +16,7 @@ const Pokedex = () => {
 
   useEffect(() => {
     setCargando(true)
-    fetch('http://localhost:4000/pokemon')
+    fetch('http://localhost:4000/pokemon', {mode: 'cors'})
       .then((response) => response.json())
       .then((resultado) => {
         setAllPokemons(resultado) 
