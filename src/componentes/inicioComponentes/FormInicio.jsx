@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Error from "./Error";
 
 function FormInicio() {
 
@@ -7,9 +8,20 @@ function FormInicio() {
   const navegar = useNavigate();
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false)
 
   const verify = async (e) => {
     e.preventDefault();
+
+    if([name, password].includes('')){
+      console.log('hay al menos un campo vacio');
+      setError(true);
+      return;
+  }
+
+  setError(false)
+
+
     try {
       const res = await fetch("http://localhost:4000/register/login", {
         method: "POST",
@@ -26,7 +38,6 @@ function FormInicio() {
       localStorage.setItem("token", userFetch.token);
       navegar("/Pokedex");
     } catch (error) {
-      console.log("Error");
       alert("Usuario no registrado");
     }
   };
@@ -40,6 +51,7 @@ function FormInicio() {
 
   return (
     <form action="" onSubmit={verify}>
+      {error && <Error>Todos los campos son obligatorios</Error>}
       <div className="input-container w-[90%] md:w-1/2 flex flex-col justify-center">
         <label>¿Cuál es su usuario?</label>
         <input type="text" onChange={handleName} placeholder='ingrese su usuario' className='w-full md:w-[500px] pl-[20px] bg-[#f7f7f9] mt-[10px] mb-[50px] rounded-xl py-[5px] shadow-md hover:shadow-xl' required />
