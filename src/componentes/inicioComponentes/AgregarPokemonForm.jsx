@@ -4,20 +4,22 @@ import { useState } from 'react';
 
 const AgregarPokemonForm = () => {
   const [name, setName] = useState("");
-  const [img, setImg] = useState("");
+  const [image, setImage] = useState("");
   const [type1, setType1] = useState("");
   const [type2, setType2] = useState("");
   const [description, setDescription] = useState("");
-  const [weight, setWeight] = useState("");
-  const [height, setHeight] = useState("");
+  const [weight, setWeight] = useState(0);
+  const [height, setHeight] = useState(0);
   const [move, setMove] = useState("");
   const [moveTwo, setMoveTwo] = useState("");
-  const [hp, setHp] = useState("");
-  const [atk, setAtk] = useState("");
-  const [def, setDef] = useState("");
-  const [satk, setSatk] = useState("");
-  const [sdef, setSdef] = useState("");
-  const [spd, setSpd] = useState("");
+  const [hp, setHp] = useState(0);
+  const [atk, setAtk] = useState(0);
+  const [def, setDef] = useState(0);
+  const [satk, setSatk] = useState(0);
+  const [sdef, setSdef] = useState(0);
+  const [spd, setSpd] = useState(0);
+  const [type, setType] = useState(0);
+  const [typeName, setTypeName] = useState(0);
 
    
   const Form = async () => {
@@ -28,33 +30,33 @@ const AgregarPokemonForm = () => {
           "auth-token": localStorage.getItem("jwt"),
         },
         body: JSON.stringify({
-          datosPokemon: {
+          pokemon: {
             name: name,
             height: height,
             weight: weight,
             description: description,
-            image: img,
-            HP: hp,
-            ATK: atk,
-            DEF: def,
-            SATK: satk,
-            SDEF: sdef,
-            SPD: spd,
-            type: type
+            image: image,
+            hp: hp,
+            atk: atk,
+            def: def,
+            satk: satk,
+            sdef: sdef,
+            spd: spd,
+            type: "grass"
         },
-        Moves: [
-            {   
+        moves: [
+            {   id:1,
                 nombre: move
             },
-            {   
+            {   id:2,
                 nombre: moveTwo
             }
         ],
-        Types: [
-            {   
+        types: [
+            {   id:type1,
                 name: type1
             },
-            {   
+            {   id:type2,
                 name: type2
             }
         ]
@@ -64,17 +66,17 @@ const AgregarPokemonForm = () => {
 
 
   const onClick = (e) => {
-    e.preventDefault();
     Form();
   };
   const onChangeName = (e) => {
     setName(e.target.value);
   };
-  const onChangeImg = (e) => {
-    setImg(e.target.value);
+  const onChangeImage = (e) => {
+    setImage(e.target.value);
   };
   const onChangeType1 = (e) => {
     setType1(e.target.value);
+    setTypeName(e.target.name);
   };
   const onChangeType2 = (e) => {
     setType2(e.target.value);
@@ -112,11 +114,13 @@ const AgregarPokemonForm = () => {
   const onChangeDescription = (e) => {
     setDescription(e.target.value);
   }
+  
+  
 
   return (
-    <section>
+    <section className='w-full bg-[#ffca2a] h-full pt-[50px]'>
         
-      <div className="flex flex-col">
+      <div className='flex w-4/5 md:w-1/3 h-full m-auto  border-black border-[0.1px] flex-col bg-[#F7F7F7] rounded-xl '>
     
         <div className="mt-[2vh]" >
           <label className="font-bold">Ingresa su nombre</label>
@@ -124,58 +128,52 @@ const AgregarPokemonForm = () => {
         </div>
         <div className="mt-[2vh]" >
           <label className="font-bold">Ingresa el URL de la imagen</label>
-          <input className="border border-none pl-[20px] mt-[5px] rounded-3xl w-[50vh]"
-            type="url"
-            name="image"
-            id="image"
-            value={img}
-            onChange={onChangeImg}
-          />
+          <input type="url" name="image" id="image" value={image} onChange={onChangeImage}/>
         </div>
         <div className="mt-[2vh]" >
           <label className="font-bold">Ingresa sus tipos</label>
           <br/>
-          <select id="tipos" onChange={onChangeType1} className="rounded-3xl pl-[10px] m-[6px] border border-none w-[50vh] h-[3vh] text-gray-400">
-             <option selected>Selecciona su tipo principal</option>
-             <option value="agua">Agua</option>
-             <option value="dragon">Dragon</option>
-             <option value="electrico">Electrico</option>
-             <option value="fantasma">Fantasma</option>
-             <option value="fuego">Fuego</option>
-             <option value="hada">Hada</option>
-             <option value="hielo">Hielo</option>
-             <option value="insecto">Insecto</option>
-             <option value="luchador">Luchador</option>
-             <option value="metal">Metal</option>
-             <option value="normal">Normal</option>
-             <option value="oscuro">Oscuro</option>
-             <option value="planta">Planta</option>
-             <option value="psiquico">Psiquico</option>
-             <option value="roca">Roca</option>
-             <option value="tierra">Tierra</option>
-             <option value="venenoso">Venenoso</option>
-             <option value="volador">Volador</option>
+          <select defaultValue={1} id="tipos" onChange={onChangeType1} className="rounded-3xl pl-[10px] m-[6px] border border-none w-[50vh] h-[3vh] text-gray-400">
+             <option value={0}>Selecciona su tipo principal</option>
+             <option value={1} name='water'>Agua</option>
+             <option value={2} name='dragon'>Dragon</option>
+             <option value={3} name='electric'>Electrico</option>
+             <option value={4} name='ghost'>Fantasma</option>
+             <option value={5} name='fire'>Fuego</option>
+             <option value={6} name='tail'>Hada</option>
+             <option value={7} name='ice'>Hielo</option>
+             <option value={8} name='bug'>Insecto</option>
+             <option value={9} name='fighting'>Luchador</option>
+             <option value={10} name='steel'>Metal</option>
+             <option value={11} name='normal'>Normal</option>
+             <option value={12} name='dark'>Oscuro</option>
+             <option value={13} name='grass'>Planta</option>
+             <option value={14} name='psychic'>Psiquico</option>
+             <option value={15} name='rock'>Roca</option>
+             <option value={16} name='ground'>Tierra</option>
+             <option value={17} name='poison'>Venenoso</option>
+             <option value={18} name='flying'>Volador</option>
           </select>
-          <select id="tipos" onChange={onChangeType2} className="rounded-3xl pl-[10px] m-[6px] border border-none w-[50vh] h-[3vh] text-gray-400">
-             <option selected>Selecciona su tipo secundario (si tiene)</option>
-             <option value="agua">Agua</option>
-             <option value="dragon">Dragon</option>
-             <option value="electrico">Electrico</option>
-             <option value="fantasma">Fantasma</option>
-             <option value="fuego">Fuego</option>
-             <option value="hada">Hada</option>
-             <option value="hielo">Hielo</option>
-             <option value="insecto">Insecto</option>
-             <option value="luchador">Luchador</option>
-             <option value="metal">Metal</option>
-             <option value="normal">Normal</option>
-             <option value="oscuro">Oscuro</option>
-             <option value="planta">Planta</option>
-             <option value="psiquico">Psiquico</option>
-             <option value="roca">Roca</option>
-             <option value="tierra">Tierra</option>
-             <option value="venenoso">Venenoso</option>
-             <option value="volador">Volador</option>
+          <select defaultValue={1} id="tipos" onChange={onChangeType2} className="rounded-3xl pl-[10px] m-[6px] border border-none w-[50vh] h-[3vh] text-gray-400">
+             <option value={0}>Selecciona su tipo secundario (si tiene)</option>
+             <option value={1}>Agua</option>
+             <option value={2}>Dragon</option>
+             <option value={3}>Electrico</option>
+             <option value={4}>Fantasma</option>
+             <option value={5}>Fuego</option>
+             <option value={6}>Hada</option>
+             <option value={7}>Hielo</option>
+             <option value={8}>Insecto</option>
+             <option value={9}>Luchador</option>
+             <option value={10}>Metal</option>
+             <option value={11}>Normal</option>
+             <option value={12}>Oscuro</option>
+             <option value={13}>Planta</option>
+             <option value={14}>Psiquico</option>
+             <option value={15}>Roca</option>
+             <option value={16}>Tierra</option>
+             <option value={17}>Venenoso</option>
+             <option value={18}>Volador</option>
           </select>
         </div>
         <div className="mt-[2vh]" >
@@ -216,47 +214,8 @@ const AgregarPokemonForm = () => {
             onChange={onChangeMove}
           />
         </div>
-          {/* <select id="tipos" onChange={onChangeMove} className="rounded-3xl pl-[10px] m-[6px] border border-none w-[50vh] h-[3vh] text-gray-400">
-             <option selected>Selecciona un movimiento</option>
-             <option value="RAZOR-WIND">RAZOR-WIND</option>
-             <option value="SWORD-DANCE">SWORD-DANCE</option>
-             <option value="MEGA-PUNCH">MEGA-PUNCH</option>
-             <option value="FIRE-PUNCH">FIRE-PUNCH</option>
-             <option value="ICE-PUNCH">ICE-PUNCH</option>
-             <option value="TACKLE">TACKLE</option>
-             <option value="STRING-SHOT">STRING-SHOT</option>
-             <option value="HARDEN">HARDEN</option>
-             <option value="GUST">GUST</option>
-             <option value="POISON-STING">POISON-STING</option>
-             <option value="HEADBUTT">HEADBUTT</option>
-             <option value="WHIRLWIND">WHIRLWIND</option>
-             <option value="BIND">BIND</option>
-             <option value="SLAM">SLAM</option>
-             <option value="PAY-DAY">PAY-DAY</option>
-             <option value="CUT">CUT</option>
-             <option value="SCRATCH">SCRATCH</option>
-          </select>
-          <select id="tipos" onChange={onChangeMoveTwo} className="rounded-3xl pl-[10px] m-[6px] border border-none w-[50vh] h-[3vh] text-gray-400">
-            <option selected>Selecciona un movimiento</option>
-            <option value="RAZOR-WIND">RAZOR-WIND</option>
-            <option value="SWORD-DANCE">SWORD-DANCE</option>
-            <option value="MEGA-PUNCH">MEGA-PUNCH</option>
-            <option value="FIRE-PUNCH">FIRE-PUNCH</option>
-            <option value="ICE-PUNCH">ICE-PUNCH</option>
-            <option value="TACKLE">TACKLE</option>
-            <option value="STRING-SHOT">STRING-SHOT</option>
-            <option value="HARDEN">HARDEN</option>
-            <option value="GUST">GUST</option>
-            <option value="POISON-STING">POISON-STING</option>
-            <option value="HEADBUTT">HEADBUTT</option>
-            <option value="WHIRLWIND">WHIRLWIND</option>
-            <option value="BIND">BIND</option>
-            <option value="SLAM">SLAM</option>
-            <option value="PAY-DAY">PAY-DAY</option>
-            <option value="CUT">CUT</option>
-            <option value="SCRATCH">SCRATCH</option>
-          </select> */}
-        </div>
+         
+      </div>
         <div className="mt-[1vh] flex flex-col" >
           <label className="font-bold">Ingresa sus estadísticas</label>
           <div className="flex flex-row">
@@ -313,7 +272,7 @@ const AgregarPokemonForm = () => {
           </div>
         </div>
         <div className="flex justify-center items-center">
-          <button onClick={onClick} className="bg-gradient-to-b from-blue-500 to-blue-900 rounded-3xl font-medium p-2 md:p-4 text-white uppercase w-[50vh] ">AGREGAR</button>
+          <button onClick={() => {onClick()}} className="bg-gradient-to-b from-blue-500 to-blue-900 rounded-3xl font-medium p-2 md:p-4 text-white uppercase w-[50vh] ">AGREGAR</button>
         </div>
       </div>
     </section>
