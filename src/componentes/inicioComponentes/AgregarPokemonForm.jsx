@@ -1,9 +1,10 @@
 import React from 'react'
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
 
 const AgregarPokemonForm = () => {
+  
+  const navegar = useNavigate();
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
@@ -23,8 +24,9 @@ const AgregarPokemonForm = () => {
   const [typeName2, setTypeName2] = useState('');
 
    
-  const Form = async () => {
-      const response = await fetch("http://localhost:4000/Pokemon", {
+  const form = async () => {
+    try {
+      const res = await fetch("http://localhost:4000/Pokemon", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,24 +48,33 @@ const AgregarPokemonForm = () => {
             type: typeName1
         },
         moves: [
-            {   moves_id:1,
-                name: move
+            {   id:1,
+                nombre: move
             },
-            {   moves_id:2,
-                name: moveTwo
+            {   id:2,
+                nombre: moveTwo
             }
         ],
         types: [
-            {   types_id:types_id1,
+            {   id:types_id1,
                 name: typeName1
             },
-            {   types_id:types_id2,
+            {   id:types_id2,
                 name: typeName2
             }
         ]
         })
       });
+      if (!res.ok) {
+        throw new Error("invalid data ");
+      }
+      navegar("/Pokedex");
+    } catch (error) {
+      console.log("Error");
+      alert("Todos los datos son obligatorios");
     }
+    }
+
 
 
   const onClick = (e) => {
@@ -120,7 +131,7 @@ const AgregarPokemonForm = () => {
   
 
   return (
-    <section className='w-full bg-[#ffca2a] h-full pt-[50px]'>
+    <form onSubmit={form} className='w-full bg-[#ffca2a] h-full pt-[50px]'>
       <div className='flex w-4/5 md:w-1/3 h-full m-auto  border-black border-[0.1px] flex-col bg-[#F7F7F7] rounded-xl p-10 md:hover:shadow-2xl'>
         <div className='flex items-center'>
           <Link to={`/Pokedex `}>        
@@ -274,10 +285,10 @@ const AgregarPokemonForm = () => {
           </div>
         </div>
         <div className="flex justify-center items-center">
-          <button onClick={() => {onClick()}} className='bg-[#ffca2a] rounded-2xl px-5 py-[5px] shadow-md hover:shadow-xl'>Agregar Pokémon</button>
+          <button onClick={form} className='bg-[#ffca2a] rounded-2xl px-5 py-[5px] shadow-md hover:shadow-xl'>Agregar Pokémon</button>
         </div>
       </div>
-    </section>
+    </form>
   );
 };
 
