@@ -1,194 +1,323 @@
-// import { useState } from 'react';
-// import { Link } from 'react-router-dom'
-// import Tipos from './Tipos'
-
-// const AgregarPokemonForm = () => {
-
-//     const [nombre, setNombre] = useState('');
-//     const [url, setUrl] = useState('');
-//     const [descripcion, setDescripcion] = useState('');
-//     const [peso, setPeso] = useState('');
-//     const [altura, setAltura] = useState('');
-//     const [movimientos, setMovimientos] = useState('');
-//     const [hp, setHp] = useState('');
-//     const [atk, setAtk] = useState('');
-//     const [def, setDef] = useState('');
-//     const [satk, setsatk] = useState('');
-//     const [sdef, setSdef] = useState('');
-//     const [spd, setSpd] = useState('');
+import React from 'react'
+import { useState } from 'react';
 
 
-//     const [error, setError] = useState(false);
+const AgregarPokemonForm = () => {
+  const [name, setName] = useState("");
+  const [img, setImg] = useState("");
+  const [type1, setType1] = useState("");
+  const [type2, setType2] = useState("");
+  const [description, setDescription] = useState("");
+  const [weight, setWeight] = useState("");
+  const [height, setHeight] = useState("");
+  const [move, setMove] = useState("");
+  const [moveTwo, setMoveTwo] = useState("");
+  const [hp, setHp] = useState("");
+  const [atk, setAtk] = useState("");
+  const [def, setDef] = useState("");
+  const [satk, setSatk] = useState("");
+  const [sdef, setSdef] = useState("");
+  const [spd, setSpd] = useState("");
 
-//     const handleSubmit = (e) => {
-//         e.preventDefault();
-
-//         //validacion del form
-//         if([nombre, url, descripcion, peso, altura, movimientos, stats].includes('')){
-//             console.log('hay al menos un campo vacio')
-//             setError(true);
-//             return;
-//         }
-
-//         setError(false)
-//     }
-
-
-//   return (
-//     <div className='w-full bg-[#ffca2a] h-full pt-[50px]'>
-//         <div className='flex w-4/5 md:w-1/3 h-full m-auto  border-black border-[0.1px] fuente flex-col bg-[#F7F7F7] rounded-xl '>
-//             <div className="flex justify-center items-center">
-//                 <Link to={`/Pokedex `}>        
-//                     <i className="fa-solid flex  text-[25px] fa-arrow-left mr-[20px]"></i>
-//                 </Link>
-//                 <h1 className='flex justify-center my-[100px] font-bold text-4xl'>Agregar Pokemon</h1>
-//             </div>
-//             <form onSubmit={handleSubmit} className='flex flex-col w-[80%] md:w-full items-center justify-center'>
-//             {error && (<div><p className='text-red-600 text-center uppercase font-bold mb-5 p-3 rounded-xl'>Todos los campos son obligatorios</p></div>)}
-//                 <div className='w-[90%] md:w-1/2'>
-//                     <label htmlFor='nombre'>Nombre</label>
-//                     <input value={nombre} onChange={(e) => setNombre(e.target.value)} id='nombre' type='text' placeholder='ingrese el nombre' className='w-full pl-[20px]  mt-[10px] mb-[50px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
-//                 </div>
-//                 <div className='w-[90%] md:w-1/2'>
-//                     <label htmlFor='url'>URL de la imagen</label>
-//                     <input value={url} onChange={(e) => setUrl(e.target.value)} id='url' type='url' placeholder='ingrese el url' className='w-full pl-[20px]  mt-[10px] mb-[50px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
-//                 </div>
-//                 <Tipos/>
-//                 <div className='w-[90%] md:w-1/2'>
-//                     <label htmlFor='descripcion'>Descripción</label>
-//                     <textarea value={descripcion} onChange={(e) => setDescripcion(e.target.value)} id='descripcion' placeholder='ingrese la descripcion' className='w-full pl-[20px]  mt-[10px] mb-[50px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></textarea>
-//                 </div>
-//                 <div className='w-[90%] md:w-1/2'>
-//                     <label htmlFor='peso'>Peso</label>
-//                     <input value={peso} onChange={(e) => setPeso(e.target.value)} id='peso' type='number' placeholder='Ingrese el peso' className='w-full pl-[20px] mt-[10px] mb-[50px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
-//                 </div>
-//                 <div className='w-[90%] md:w-1/2'>
-//                     <label htmlFor='altura'>Altura</label>
-//                     <input value={altura} onChange={(e) => setAltura(e.target.value)} id='altura' type='number' placeholder='Ingrese la altura' className='w-full pl-[20px] mt-[10px] mb-[50px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
-//                 </div>
-//                 <div className='w-[90%] md:w-1/2'>
-//                     <label htmlFor='movimientos'>Movimientos</label>
-//                     <input value={movimientos} onChange={(e) => setMovimientos(e.target.value)} id='movimientos' type='text' placeholder='Movimiento 1' className='w-full pl-[20px] mt-[10px]  rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
-//                     <input value={movimientos} onChange={(e) => setMovimientos(e.target.value)} type='text' placeholder='Movimiento 2' className='w-full pl-[20px] mt-[10px] mb-[50px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
-//                 </div>
-//                 <div className='w-[90%] md:w-1/2'>
-//                     <label htmlFor='stats'>Stats</label>
-//                     <input value={hp} onChange={(e) => setHp(e.target.value)} id='stats' type='number' placeholder='HP' className='w-full pl-[20px] mt-[10px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
-//                     <input value={atk} onChange={(e) => setAtk(e.target.value)} type='number' placeholder='ATK' className='w-full pl-[20px] mt-[10px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
-//                     <input value={def} onChange={(e) => setDef(e.target.value)} type='number' placeholder='DEF' className='w-full pl-[20px] mt-[10px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
-//                     <input value={satk} onChange={(e) => setSatk(e.target.value)} type='number' placeholder='SATK' className='w-full pl-[20px] mt-[10px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
-//                     <input value={sdef} onChange={(e) => setSdef(e.target.value)} type='number' placeholder='SDEF' className='w-full pl-[20px] mt-[10px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
-//                     <input value={spd} onChange={(e) => setSpd(e.target.value)} type='number' placeholder='SPD' className='w-full pl-[20px] mt-[10px] mb-[50px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
-//                 </div>
-//                 <div className='flex justify-center'>
-//                     <button type='submit' className='bg-[#ffca2a] rounded-2xl mb-[100px] px-[10px] py-[5px] shadow-md hover:shadow-xl' value='Agregar Pokemon'>Agregar Pokemon</button>
-//                 </div>
-//             </form>
-//         </div> 
-//     </div>
-//   )
-// }
-
-// export default AgregarPokemonForm
-
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-
-export default function Formulario() {
-  
-  const {register, handleSubmit, formState: { errors }} = useForm();
-  const navegar = useNavigate();
-
-  const insertarPokemon = async (data) => {
-
-    const token = localStorage.getItem("token");
-
-    try {
-      await fetch("http://localhost:4000/pokemon", {
+   
+  const Form = async () => {
+      const response = await fetch("http://localhost:4000/Pokemon", {
         method: "POST",
-        body: JSON.stringify(data),
-        headers: {  "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("jwt"),
+        },
+        body: JSON.stringify({
+          datosPokemon: {
+            name: name,
+            height: height,
+            weight: weight,
+            description: description,
+            image: img,
+            HP: hp,
+            ATK: atk,
+            DEF: def,
+            SATK: satk,
+            SDEF: sdef,
+            SPD: spd,
+            type: type
+        },
+        Moves: [
+            {   
+                nombre: move
+            },
+            {   
+                nombre: moveTwo
+            }
+        ],
+        Types: [
+            {   
+                name: type1
+            },
+            {   
+                name: type2
+            }
+        ]
+        })
       });
-
-      navegar("/Pokedex");
-    } catch (error) {
-      alert("Por favor rellenar los campos marcados con *");
     }
+
+
+  const onClick = (e) => {
+    e.preventDefault();
+    Form();
   };
+  const onChangeName = (e) => {
+    setName(e.target.value);
+  };
+  const onChangeImg = (e) => {
+    setImg(e.target.value);
+  };
+  const onChangeType1 = (e) => {
+    setType1(e.target.value);
+  };
+  const onChangeType2 = (e) => {
+    setType2(e.target.value);
+  };
+  const onChangeWeight = (e) => {
+    setWeight(e.target.value);
+  };
+  const onChangeHeight = (e) => {
+    setHeight(e.target.value);
+  };
+  const onChangeMove = (e) => {
+    setMove(e.target.value);
+  };
+  const onChangeMoveTwo = (e) => {
+    setMoveTwo(e.target.value);
+  };
+  const onChangeHp = (e) => {
+    setHp(e.target.value);
+  };
+  const onChangeAtk = (e) => {
+    setAtk(e.target.value);
+  };
+  const onChangeDef = (e) => {
+    setDef(e.target.value);
+  };
+  const onChangeSatk = (e) => {
+    setSatk(e.target.value);
+  };
+  const onChangeSdef = (e) => {
+    setSdef(e.target.value);
+  };
+  const onChangeSpd = (e) => {
+    setSpd(e.target.value);
+  };
+  const onChangeDescription = (e) => {
+    setDescription(e.target.value);
+  }
 
   return (
-    <div>
-      
-      <form onSubmit={handleSubmit(insertarPokemon)}>    
-
-        <div className="flex flex-col">      
-          
-          <label htmlFor="Nombre">Nombre *</label>
-          <input type="text" {...register("nombre", { required: true, maxLength: 20 })}/>
-          {errors.nombre?.type === "required" && (<p>Campo obligatorio</p>)}
-              
-          <label htmlFor="Numero">ID *</label>
-          <input type="number"{...register("id", { required: true, maxLength: 4 })}/>
-          {errors.id?.type === "required" && (<p>Campo obligatorio</p>)}
-              
-          <label htmlFor="peso ">Peso *</label>
-          <input type="number" {...register("peso", { min: 0.1, required: true, maxLength: 4 })}/>
-          {errors.peso?.type === "required" && (<p>Campo obligatorio</p>)}
-              
-          <label htmlFor="Altura ">Altura *</label>
-          <input type="number" {...register("altura", {required: true, maxLength: 4, min: 0.1})}/>
-          {errors.altura?.type === "required" && <p>Campo obligatorio</p>}   
-          
-          <label htmlFor="type1">Tipo Principal *</label>
-          <input type="text" {...register("type1", {required: true, maxLength: 20})}/>
-          {errors.type1?.type === "required" && (<p>Campo obligatorio</p>)}
-          <label htmlFor="type2">Tipo secundario </label>
-          <input type="text" {...register("type2", { maxLength: 20 })}/>
-            
-          <label htmlFor="move1">Movimiento principal *</label>
-          <input type="text" {...register("move1", {required: true, maxLength: 20})}/>
-          {errors.move1?.type === "required" && (<p>Campo obligatorio</p>)}
-          <label htmlFor="move2 ">Movimiento secundario </label>
-          <input type="text" {...register("move2", { maxLength: 20 })}/>
-            
-          <label htmlFor="imagen">Imagen *</label>
-          <input id="imagen" type="url" placeholder="url de la imagen del pokemon" {...register("imagen", { required: true })}/>
-          {errors.imagen?.type === "required" && (<p className="p-formulario">Campo obligatorio</p>)}
-
-          <label htmlFor="descripcion ">Descripcion *</label>
-          <textarea className="textarea" id="descripcion" {...register("descripcion", { required: true, minLength: 1 })}/>
-          {errors.descripcion?.type === "required" && (<p>Campo obligatorio</p>)}
-
-          <label htmlFor="hp">HP *</label>
-          <input type="number" {...register("hp",{ required: true, maxLength: 3 })}/>
-          {errors.hp?.type === "required" && (<p>Campo obligatorio</p>)}
-              
-          <label htmlFor="atk">ATK *</label>
-          <input type="number" {...register("atk",{ required: true, maxLength: 3 })}/>
-          {errors.atk?.type === "required" && (<p className="p-formulario">Campo obligatorio</p>)}
-
-          <label htmlFor="def">DEF*</label>
-          <input type="number" {...register("def",{ required: true, maxLength: 3 })}/>
-          {errors.def?.type === "required" && (<p className="p-formulario">Campo obligatorio</p>)}
-              
-          <label htmlFor="satk">SATK *</label>
-          <input type="number" {...register("satk",{ required: true, maxLength: 3 })}/>
-          {errors.satk?.type === "required" && (<p>Campo obligatorio</p>)}
-
-          <label htmlFor="sdef">SDEF *</label>
-          <input type="number" {...register("sdef",{ required: true, maxLength: 3 })}/>
-          {errors.sdef?.type === "required" && (<p>Campo obligatorio</p>)}
-              
-          <label htmlFor="spd">SPD *</label>
-          <input type="number" {...register("spd",{ required: true })}/>
-          {errors.spd?.type === "required" && (<p>Campo obligatorio</p>)}
-          
-          <button type="submit" to={`/Pokedex`}>Agregar Pokemon</button>
-
-        </div>
-      
-      </form>
+    <section>
+        
+      <div className="flex flex-col">
     
-    </div>
+        <div className="mt-[2vh]" >
+          <label className="font-bold">Ingresa su nombre</label>
+          <input className="pl-[20px] mt-[5px] rounded-3xl w-[50vh]" type="text" name="name" id="name" value={name} onChange={onChangeName}/>
+        </div>
+        <div className="mt-[2vh]" >
+          <label className="font-bold">Ingresa el URL de la imagen</label>
+          <input className="border border-none pl-[20px] mt-[5px] rounded-3xl w-[50vh]"
+            type="url"
+            name="image"
+            id="image"
+            value={img}
+            onChange={onChangeImg}
+          />
+        </div>
+        <div className="mt-[2vh]" >
+          <label className="font-bold">Ingresa sus tipos</label>
+          <br/>
+          <select id="tipos" onChange={onChangeType1} className="rounded-3xl pl-[10px] m-[6px] border border-none w-[50vh] h-[3vh] text-gray-400">
+             <option selected>Selecciona su tipo principal</option>
+             <option value="agua">Agua</option>
+             <option value="dragon">Dragon</option>
+             <option value="electrico">Electrico</option>
+             <option value="fantasma">Fantasma</option>
+             <option value="fuego">Fuego</option>
+             <option value="hada">Hada</option>
+             <option value="hielo">Hielo</option>
+             <option value="insecto">Insecto</option>
+             <option value="luchador">Luchador</option>
+             <option value="metal">Metal</option>
+             <option value="normal">Normal</option>
+             <option value="oscuro">Oscuro</option>
+             <option value="planta">Planta</option>
+             <option value="psiquico">Psiquico</option>
+             <option value="roca">Roca</option>
+             <option value="tierra">Tierra</option>
+             <option value="venenoso">Venenoso</option>
+             <option value="volador">Volador</option>
+          </select>
+          <select id="tipos" onChange={onChangeType2} className="rounded-3xl pl-[10px] m-[6px] border border-none w-[50vh] h-[3vh] text-gray-400">
+             <option selected>Selecciona su tipo secundario (si tiene)</option>
+             <option value="agua">Agua</option>
+             <option value="dragon">Dragon</option>
+             <option value="electrico">Electrico</option>
+             <option value="fantasma">Fantasma</option>
+             <option value="fuego">Fuego</option>
+             <option value="hada">Hada</option>
+             <option value="hielo">Hielo</option>
+             <option value="insecto">Insecto</option>
+             <option value="luchador">Luchador</option>
+             <option value="metal">Metal</option>
+             <option value="normal">Normal</option>
+             <option value="oscuro">Oscuro</option>
+             <option value="planta">Planta</option>
+             <option value="psiquico">Psiquico</option>
+             <option value="roca">Roca</option>
+             <option value="tierra">Tierra</option>
+             <option value="venenoso">Venenoso</option>
+             <option value="volador">Volador</option>
+          </select>
+        </div>
+        <div className="mt-[2vh]" >
+          <label className="font-bold">Ingresa su descripcion</label>
+          <textarea className="text-black rounded-3xl w-[50vh] m-[6px] pl-[10px]" type="text" name="info" id="descripcion" value={description} onChange={onChangeDescription}
+          />
+        </div>
+        <div className="mt-[1vh]" >
+          <label className="font-bold">Ingresa sus medidas</label>
+          <br/>
+          <input className="border border-none  text-black rounded-3xl w-[50vh] m-[6px] pl-[10px]"
+            type="text"
+            name="weight"
+            id="weight"
+            placeholder="Weight/gr"
+            value={weight}
+            onChange={onChangeWeight}
+          />
+          <input className="border border-none  text-black rounded-3xl w-[50vh] m-[6px] pl-[10px]"
+            type="text"
+            name="height"
+            id="height"
+            placeholder="Height/cm"
+            value={height}
+            onChange={onChangeHeight}
+          />
+        </div>
+        <div className="mt-[2vh]" >
+          <label className="font-bold">Ingresa sus movimientos</label>
+          <br/>
+          <div className="mt-[2vh]" >
+          <label className="font-bold">Ingresa sus movimientos</label>
+          <input className="border border-none pl-[20px] mt-[5px] rounded-3xl w-[50vh]"
+            type="text"
+            name="move"
+            id="move"
+            value={move}
+            onChange={onChangeMove}
+          />
+        </div>
+          {/* <select id="tipos" onChange={onChangeMove} className="rounded-3xl pl-[10px] m-[6px] border border-none w-[50vh] h-[3vh] text-gray-400">
+             <option selected>Selecciona un movimiento</option>
+             <option value="RAZOR-WIND">RAZOR-WIND</option>
+             <option value="SWORD-DANCE">SWORD-DANCE</option>
+             <option value="MEGA-PUNCH">MEGA-PUNCH</option>
+             <option value="FIRE-PUNCH">FIRE-PUNCH</option>
+             <option value="ICE-PUNCH">ICE-PUNCH</option>
+             <option value="TACKLE">TACKLE</option>
+             <option value="STRING-SHOT">STRING-SHOT</option>
+             <option value="HARDEN">HARDEN</option>
+             <option value="GUST">GUST</option>
+             <option value="POISON-STING">POISON-STING</option>
+             <option value="HEADBUTT">HEADBUTT</option>
+             <option value="WHIRLWIND">WHIRLWIND</option>
+             <option value="BIND">BIND</option>
+             <option value="SLAM">SLAM</option>
+             <option value="PAY-DAY">PAY-DAY</option>
+             <option value="CUT">CUT</option>
+             <option value="SCRATCH">SCRATCH</option>
+          </select>
+          <select id="tipos" onChange={onChangeMoveTwo} className="rounded-3xl pl-[10px] m-[6px] border border-none w-[50vh] h-[3vh] text-gray-400">
+            <option selected>Selecciona un movimiento</option>
+            <option value="RAZOR-WIND">RAZOR-WIND</option>
+            <option value="SWORD-DANCE">SWORD-DANCE</option>
+            <option value="MEGA-PUNCH">MEGA-PUNCH</option>
+            <option value="FIRE-PUNCH">FIRE-PUNCH</option>
+            <option value="ICE-PUNCH">ICE-PUNCH</option>
+            <option value="TACKLE">TACKLE</option>
+            <option value="STRING-SHOT">STRING-SHOT</option>
+            <option value="HARDEN">HARDEN</option>
+            <option value="GUST">GUST</option>
+            <option value="POISON-STING">POISON-STING</option>
+            <option value="HEADBUTT">HEADBUTT</option>
+            <option value="WHIRLWIND">WHIRLWIND</option>
+            <option value="BIND">BIND</option>
+            <option value="SLAM">SLAM</option>
+            <option value="PAY-DAY">PAY-DAY</option>
+            <option value="CUT">CUT</option>
+            <option value="SCRATCH">SCRATCH</option>
+          </select> */}
+        </div>
+        <div className="mt-[1vh] flex flex-col" >
+          <label className="font-bold">Ingresa sus estadísticas</label>
+          <div className="flex flex-row">
+            <input className="border border-none text-black rounded-3xl m-[6px] pl-[10px] w-[143px]"
+              type="text"
+              name="baseStats"
+              id="HP"
+              placeholder="HP"
+              value={hp}
+              onChange={onChangeHp}
+            />
+            <input className="border border-none  text-black rounded-3xl  m-[6px] pl-[10px] w-[143px]"
+              type="text"
+              name="baseStats"
+              id="ATK"
+              placeholder="ATK"
+              value={atk}
+              onChange={onChangeAtk}
+            />
+            <input className="border border-none  text-black rounded-3xl m-[6px] pl-[10px] w-[143px]"
+              type="text"
+              name="baseStats"
+              id="DEF"
+              placeholder="DEF"
+              value={def}
+              onChange={onChangeDef}
+            />
+          </div>
+          <div className="flex flex-row">
+          <input className="border border-none  text-black rounded-3xl m-[6px] pl-[10px] w-[143px]"
+            type="text"
+            name="baseStats"
+            id="SATK"
+            placeholder="SATK"
+            value={satk}
+            onChange={onChangeSatk}
+          />
+          <input className="border border-none  text-black rounded-3xl m-[6px] pl-[10px] w-[143px]"
+            type="text"
+            name="baseStats"
+            id="SDEF"
+            placeholder="SDEF"
+            value={sdef}
+            onChange={onChangeSdef}
+          />
+          <input className="border border-none  text-black rounded-3xl w-30% m-[6px] pl-[10px] w-[143px]"
+            type="text"
+            name="baseStats"
+            id="SPD"
+            placeholder="SPD"
+            value={spd}
+            onChange={onChangeSpd}
+          />
+          </div>
+        </div>
+        <div className="flex justify-center items-center">
+          <button onClick={onClick} className="bg-gradient-to-b from-blue-500 to-blue-900 rounded-3xl font-medium p-2 md:p-4 text-white uppercase w-[50vh] ">AGREGAR</button>
+        </div>
+      </div>
+    </section>
   );
-}
+};
+
+export default AgregarPokemonForm
