@@ -10,7 +10,13 @@ const AgregarPokemonForm = () => {
     const [peso, setPeso] = useState('');
     const [altura, setAltura] = useState('');
     const [movimientos, setMovimientos] = useState('');
-    const [stats, setStats] = useState('');
+    const [hp, setHp] = useState('');
+    const [atk, setAtk] = useState('');
+    const [def, setDef] = useState('');
+    const [satk, setsatk] = useState('');
+    const [sdef, setSdef] = useState('');
+    const [spd, setSpd] = useState('');
+
 
     const [error, setError] = useState(false);
 
@@ -67,12 +73,12 @@ const AgregarPokemonForm = () => {
                 </div>
                 <div className='w-[90%] md:w-1/2'>
                     <label htmlFor='stats'>Stats</label>
-                    <input value={stats} onChange={(e) => setStats(e.target.value)} id='stats' type='number' placeholder='HP' className='w-full pl-[20px] mt-[10px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
-                    <input value={stats} onChange={(e) => setStats(e.target.value)} type='number' placeholder='ATK' className='w-full pl-[20px] mt-[10px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
-                    <input value={stats} onChange={(e) => setStats(e.target.value)} type='number' placeholder='DEF' className='w-full pl-[20px] mt-[10px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
-                    <input value={stats} onChange={(e) => setStats(e.target.value)} type='number' placeholder='SATK' className='w-full pl-[20px] mt-[10px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
-                    <input value={stats} onChange={(e) => setStats(e.target.value)} type='number' placeholder='SDEF' className='w-full pl-[20px] mt-[10px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
-                    <input value={stats} onChange={(e) => setStats(e.target.value)} type='number' placeholder='SPD' className='w-full pl-[20px] mt-[10px] mb-[50px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
+                    <input value={hp} onChange={(e) => setHp(e.target.value)} id='stats' type='number' placeholder='HP' className='w-full pl-[20px] mt-[10px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
+                    <input value={atk} onChange={(e) => setAtk(e.target.value)} type='number' placeholder='ATK' className='w-full pl-[20px] mt-[10px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
+                    <input value={def} onChange={(e) => setDef(e.target.value)} type='number' placeholder='DEF' className='w-full pl-[20px] mt-[10px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
+                    <input value={satk} onChange={(e) => setSatk(e.target.value)} type='number' placeholder='SATK' className='w-full pl-[20px] mt-[10px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
+                    <input value={sdef} onChange={(e) => setSdef(e.target.value)} type='number' placeholder='SDEF' className='w-full pl-[20px] mt-[10px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
+                    <input value={spd} onChange={(e) => setSpd(e.target.value)} type='number' placeholder='SPD' className='w-full pl-[20px] mt-[10px] mb-[50px] rounded-xl py-[5px] shadow-md hover:shadow-xl'></input>
                 </div>
                 <div className='flex justify-center'>
                     <button type='submit' className='bg-[#ffca2a] rounded-2xl mb-[100px] px-[10px] py-[5px] shadow-md hover:shadow-xl' value='Agregar Pokemon'>Agregar Pokemon</button>
