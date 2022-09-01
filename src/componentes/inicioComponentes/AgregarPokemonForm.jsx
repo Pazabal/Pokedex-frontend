@@ -48,18 +48,18 @@ const AgregarPokemonForm = () => {
             type: typeName1
         },
         moves: [
-            {   id:1,
-                nombre: move
+            {   moves_id:1,
+                name: move
             },
-            {   id:2,
-                nombre: moveTwo
+            {   moves_id:2,
+                name: moveTwo
             }
         ],
         types: [
-            {   id:types_id1,
+            {   types_id:types_id1,
                 name: typeName1
             },
-            {   id:types_id2,
+            {   types_id:types_id2,
                 name: typeName2
             }
         ]
@@ -78,7 +78,7 @@ const AgregarPokemonForm = () => {
 
 
   const onClick = (e) => {
-    Form();
+    form();
   };
   const onChangeName = (e) => {
     setName(e.target.value);
@@ -87,11 +87,11 @@ const AgregarPokemonForm = () => {
     setImage(e.target.value);
   };
   const onChangeType1 = (e) => {
-    setType_id1(e.target.value.parseInt);
+    setType_id1(e.target.value);
     setTypeName1(e.target.name);
   };
   const onChangeType2 = (e) => {
-    setType_id2(e.target.value.parseInt);
+    setType_id2(e.target.value);
     setTypeName2(e.target.name);
   };
   const onChangeWeight = (e) => {
@@ -129,7 +129,7 @@ const AgregarPokemonForm = () => {
   }
   
   
-
+  console.log(onChangeType1)
   return (
     <form onSubmit={form} className='w-full bg-[#ffca2a] h-full pt-[50px]'>
       <div className='flex w-4/5 md:w-1/3 h-full m-auto  border-black border-[0.1px] flex-col bg-[#F7F7F7] rounded-xl p-10 md:hover:shadow-2xl'>
@@ -173,7 +173,7 @@ const AgregarPokemonForm = () => {
              <option value={18} name='ice'>Ice</option>
           </select>
           <select defaultValue={1} id="tipos" onChange={onChangeType2} className='w-full md:w-[500px] pl-[20px] bg-[#f7f7f9] mt-[10px] mb-[50px] rounded-xl py-[5px] shadow-md hover:shadow-xl'>
-             <option value={0}>Selecciona su tipo secundario (si tiene)</option>
+             <option disabled >Selecciona su tipo secundario (si tiene)</option>
              <option value={1} name='water'>Agua</option>
              <option value={2} name='fire'>Fire</option>
              <option value={3} name='grass'>Grass</option>
@@ -192,6 +192,7 @@ const AgregarPokemonForm = () => {
              <option value={16} name='fairy'>Fairy</option>
              <option value={17} name='fighting'>Fighting</option>
              <option value={18} name='ice'>Ice</option>
+             <option value={19} name='notienetipo'>No tiene tipo secundario</option>
           </select>
         </div>
         <div className="mt-[2vh]" >
@@ -285,7 +286,7 @@ const AgregarPokemonForm = () => {
           </div>
         </div>
         <div className="flex justify-center items-center">
-          <button onClick={form} className='bg-[#ffca2a] rounded-2xl px-5 py-[5px] shadow-md hover:shadow-xl'>Agregar Pokémon</button>
+          <button onClick={onClick} className='bg-[#ffca2a] rounded-2xl px-5 py-[5px] shadow-md hover:shadow-xl'>Agregar Pokémon</button>
         </div>
       </div>
     </form>
